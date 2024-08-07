@@ -354,7 +354,7 @@ grid_night = nighttime_data.groupby(nighttime_data.index.date)['Energy from grid
 
 # Create Dash app
 app = dash.Dash(__name__)
-
+server = app.server
 # Define app layout
 # Define app layout
 app.layout = html.Div([
