@@ -140,12 +140,14 @@ server = app.server
 
 # Define app layout
 app.layout = html.Div([
-    html.Div(
+    html.Div([
         html.H1("P3 PV Dashboard",
                 style={'text-align': 'center', 'color': '#000000', 'font-family': 'Arial, sans-serif',
-                       'margin-bottom': '20px'}),
-        style={'background-color': '#ffffff', 'padding': '20px'}
-    ),
+                       'margin-bottom': '20px', 'flex': '1'}),
+        html.Img(src='/assets/logo.png',
+                 style={'height': '100px', 'width': 'auto', 'display': 'block', 'margin-left': 'auto'})
+    ], style={'display': 'flex', 'align-items': 'center', 'justify-content': 'center', 'background-color': '#ffffff',
+              'padding': '20px'}),
     html.Div(
         html.P("Select the date range to visualize data:",
                style={'text-align': 'center', 'font-family': 'Arial, sans-serif', 'margin-bottom': '10px',
@@ -169,24 +171,19 @@ app.layout = html.Div([
                          'box-shadow': '0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
                          'border-radius': '10px', 'background-color': '#ffffff'}),
     ]),
-    # html.Div([
-    #     dcc.Graph(id='consumption-grid-solar-graph',
-    #               style={'width': '100%', 'margin-bottom': '20px',
-    #                      'box-shadow': '0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-    #                      'border-radius': '10px', 'background-color': '#ffffff'})
-    # ]),
     html.Div([
         dcc.Graph(id='energy-graph',
                   style={'width': '100%', 'margin-bottom': '20px',
                          'box-shadow': '0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
                          'border-radius': '10px', 'background-color': '#ffffff'}),
+    ]),
+    html.Div([
+        html.Footer(
+            "Developed by VOCMax",
+            style={'text-align': 'center', 'font-family': 'Arial, sans-serif', 'color': '#000000',
+                   'margin-top': '20px', 'padding': '10px', 'background-color': '#ffffff', 'font-size': '12px'}
+        )
     ])
-    # html.Div([
-    #     dcc.Graph(id='ghi-graph',
-    #               style={'width': '100%', 'margin-bottom': '20px',
-    #                      'box-shadow': '0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-    #                      'border-radius': '10px', 'background-color': '#ffffff'})
-    # ])
 ], style={'background-color': '#ffffff', 'padding': '20px', 'font-family': 'Arial, sans-serif'})
 
 
