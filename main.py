@@ -396,10 +396,10 @@ def update_graph(start_date, end_date):
     filtered_df_inv_plot_b = df_inv_b.loc[start_date:end_date]
     filtered_df_hs_plot_b = df_hs_p1_b.loc[start_date:end_date]
 
-    export_b.index = pd.to_datetime(export.index)
+    export_b.index = pd.to_datetime(export_b.index)
     filtered_export_b = export.loc[start_date:end_date]
 
-    solar_consumed_b.index = pd.to_datetime(solar_consumed.index)
+    solar_consumed_b.index = pd.to_datetime(solar_consumed_b.index)
     filtered_solar_consumed_b = solar_consumed.loc[start_date:end_date]
 
     helioscope_df_b.index = pd.to_datetime(helioscope_b.index)
