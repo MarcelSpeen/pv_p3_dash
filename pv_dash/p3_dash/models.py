@@ -1,3 +1,9 @@
+
 from django.db import models
 
-# Create your models here.
+class YourDataModel(models.Model):
+    column1 = models.CharField(max_length=255)
+    column2 = models.FloatField()
+
+
+

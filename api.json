@@ -1,0 +1,398 @@
+{
+    "pvSystemId": "4d73d7f5-2957-4c38-b45e-747367165caf",
+    "deviceId": null,
+    "data": [
+        {
+            "logDateTime": "2024-08-20T10:00:00Z",
+            "logDuration": 300,
+            "channels": [
+                {
+                    "channelName": "EnergySelfConsumption",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 240.77
+                },
+                {
+                    "channelName": "EnergyFeedIn",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 6.0
+                },
+                {
+                    "channelName": "EnergyBattCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 48.66
+                },
+                {
+                    "channelName": "EnergyBattDischargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattDischarge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.5
+                },
+                {
+                    "channelName": "EnergyPurchased",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyOutput",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeBatt",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyOutput",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 295.43
+                },
+                {
+                    "channelName": "EnergySelfConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 289.43
+                },
+                {
+                    "channelName": "EnergyConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 241.27
+                },
+                {
+                    "channelName": "EnergyEVCChargeTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                }
+            ]
+        },
+        {
+            "logDateTime": "2024-08-20T10:05:00Z",
+            "logDuration": 300,
+            "channels": [
+                {
+                    "channelName": "EnergySelfConsumption",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 300.64
+                },
+                {
+                    "channelName": "EnergyFeedIn",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 3.0
+                },
+                {
+                    "channelName": "EnergyBattCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.26
+                },
+                {
+                    "channelName": "EnergyBattDischargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattDischarge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 6.22
+                },
+                {
+                    "channelName": "EnergyPurchased",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyOutput",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeBatt",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyProductionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 303.9
+                },
+                {
+                    "channelName": "EnergySelfConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 300.9
+                },
+                {
+                    "channelName": "EnergyConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 306.86
+                },
+                {
+                    "channelName": "EnergyEVCChargeTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                }
+            ]
+        },
+        {
+            "logDateTime": "2024-08-20T10:10:00Z",
+            "logDuration": 300,
+            "channels": [
+                {
+                    "channelName": "EnergySelfConsumption",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 286.78
+                },
+                {
+                    "channelName": "EnergyFeedIn",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 2.0
+                },
+                {
+                    "channelName": "EnergyBattCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.37
+                },
+                {
+                    "channelName": "EnergyBattDischargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattDischarge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 6.26
+                },
+                {
+                    "channelName": "EnergyPurchased",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 1.0
+                },
+                {
+                    "channelName": "EnergyBattChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyOutput",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeBatt",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyProductionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 289.15
+                },
+                {
+                    "channelName": "EnergySelfConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 287.15
+                },
+                {
+                    "channelName": "EnergyConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 294.04
+                },
+                {
+                    "channelName": "EnergyEVCChargeTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                }
+            ]
+        },
+        {
+            "logDateTime": "2024-08-20T10:15:00Z",
+            "logDuration": 300,
+            "channels": [
+                {
+                    "channelName": "EnergySelfConsumption",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 281.7
+                },
+                {
+                    "channelName": "EnergyFeedIn",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 5.0
+                },
+                {
+                    "channelName": "EnergyBattCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.16
+                },
+                {
+                    "channelName": "EnergyBattDischargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattDischarge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 9.37
+                },
+                {
+                    "channelName": "EnergyPurchased",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyBattChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyOutput",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCCharge",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeBatt",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyEVCChargeGrid",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                },
+                {
+                    "channelName": "EnergyProductionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 286.86
+                },
+                {
+                    "channelName": "EnergySelfConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 281.86
+                },
+                {
+                    "channelName": "EnergyConsumptionTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 291.07
+                },
+                {
+                    "channelName": "EnergyEVCChargeTotal",
+                    "channelType": "Energy",
+                    "unit": "Wh",
+                    "value": 0.0
+                }
+            ]
+        }
+    ],
+    "links": {
+        "first": "https://api.solarweb.com/swqapi/pvsystems/4d73d7f5-2957-4c38-b45e-747367165caf/histdata?from=2024-08-20T10:00:00Z&to=2024-08-20T10:15:00Z&offset=0&limit=50",
+        "prev": null,
+        "self": "https://api.solarweb.com/swqapi/pvsystems/4d73d7f5-2957-4c38-b45e-747367165caf/histdata?from=2024-08-20T10:00:00Z&to=2024-08-20T10:15:00Z&offset=0&limit=50",
+        "next": null,
+        "last": "https://api.solarweb.com/swqapi/pvsystems/4d73d7f5-2957-4c38-b45e-747367165caf/histdata?from=2024-08-20T10:00:00Z&to=2024-08-20T10:15:00Z&offset=0&limit=50",
+        "totalItemsCount": 4
+    }
+}
