@@ -5,16 +5,48 @@ import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
 
+from data_prep.data_helper import DataProcessor
+
+# # List of Excel file paths and CSV path
+# file_paths_b = [
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_01.xlsx',
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_02.xlsx',
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_03.xlsx',
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_04.xlsx',
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_05.xlsx',
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_06.xlsx',
+#     'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_07.xlsx',
+#     'p3_plants/boxer/KEEROMVIEW__Boxer_Worcester_01082024-15082024.xlsx'
+# ]
+# csv_path_b = 'p3_plants/boxer/boxer.csv'
+#
+# # Create DataProcessor object
+# data_processor_b = DataProcessor(file_paths_b, csv_path_b)
+#
+# # Load and process Excel files
+# data_processor_b.load_excel_files()
+# data_processor_b.resample_data()
+# data_processor_b.split_day_night_data()
+#
+# # Process CSV file
+# df_hs_p1_b = data_processor_b.load_csv_file()
+# helioscope_df_b = data_processor_b.process_csv(df_hs_p1_b)
+#
+# # Grouping data
+# grid_b, export_b, solar_b, solar_consumed_b = data_processor_b.group_by_date()
+# grid_day_b, grid_night_b = data_processor_b.group_day_night()
+
+
 # List of file paths
 file_paths = [
-    'Energy_Report_JET_Worcester_Monthly_report_2024_01.xlsx',
-    'Energy_Report_JET_Worcester_Monthly_report_2024_02.xlsx',
-    'Energy_Report_JET_Worcester_Monthly_report_2024_03.xlsx',
-    'Energy_Report_JET_Worcester_Monthly_report_2024_04.xlsx',
-    'Energy_Report_JET_Worcester_Monthly_report_2024_05.xlsx',
-    'Energy_Report_JET_Worcester_Monthly_report_2024_06.xlsx',
-    'Energy_Report_JET_Worcester_Monthly_report_2024_07.xlsx',
-    'AUDENVIEW__JET_Worcester_01082024-15082024.xlsx'
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_01.xlsx',
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_02.xlsx',
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_03.xlsx',
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_04.xlsx',
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_05.xlsx',
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_06.xlsx',
+    'p3_plants/jet/Energy_Report_JET_Worcester_Monthly_report_2024_07.xlsx',
+    'p3_plants/jet/AUDENVIEW__JET_Worcester_01082024-15082024.xlsx'
 ]
 
 # Initialize an empty list to hold dataframes
@@ -57,8 +89,8 @@ def change_year(timestamp):
 
 
 # Provide the file paths to your Excel files
-file_path1 = 'jet_phase1.csv'
-file_path2 = 'jet_phase2.csv'
+file_path1 = 'p3_plants/jet/jet_phase1.csv'
+file_path2 = 'p3_plants/jet/jet_phase2.csv'
 
 # Set 'Date and time' as the index
 # Read each Excel file into a separate DataFrame
@@ -81,7 +113,7 @@ df_total_actual_dc_power = pd.DataFrame({'total_actual_dc_power': total_actual_d
 # Optionally, you can concatenate this dataframe with the original dataframes
 # For example, if you want to keep all the other columns intact
 df_hs = pd.concat([df_hs_p1, df_total_actual_dc_power], axis=1)
-
+df_hs
 # Reset the index to make 'timestamp' a regular column
 df_hs.reset_index(inplace=True)
 
@@ -115,15 +147,16 @@ grid_night = nighttime_data.groupby(nighttime_data.index.date)['Energy from grid
 # =====================================================
 
 # List of file paths
+#
 file_paths_b = [
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_01.xlsx',
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_02.xlsx',
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_03.xlsx',
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_04.xlsx',
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_05.xlsx',
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_06.xlsx',
-    'Energy_Report_Boxer_Worcester_Monthly_report_2024_07.xlsx',
-    'KEEROMVIEW__Boxer_Worcester_01082024-15082024.xlsx'
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_01.xlsx',
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_02.xlsx',
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_03.xlsx',
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_04.xlsx',
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_05.xlsx',
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_06.xlsx',
+    'p3_plants/boxer/Energy_Report_Boxer_Worcester_Monthly_report_2024_07.xlsx',
+    'p3_plants/boxer/KEEROMVIEW__Boxer_Worcester_01082024-15082024.xlsx'
 ]
 
 # Initialize an empty list to hold dataframes
@@ -166,7 +199,7 @@ def change_year(timestamp):
 
 
 # Provide the file paths to your Excel files
-file_path1_b = 'boxer.csv'
+file_path1_b = 'p3_plants/boxer/boxer.csv'
 
 # Set 'Date and time' as the index
 # Read each Excel file into a separate DataFrame
