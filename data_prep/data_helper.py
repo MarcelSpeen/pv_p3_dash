@@ -1,5 +1,5 @@
 import pandas as pd
-
+from sqlalchemy import create_engine
 
 class DataProcessor:
     def __init__(self, excel_paths, csv_path, day_start='08:00:00', day_end='16:00:00'):
@@ -10,12 +10,14 @@ class DataProcessor:
         self.daytime_data = None
         self.nighttime_data = None
         self.df_combined = None
+        self.db_url = "postgresql+psycopg2://marzol:12053@localhost:5432/postgres"
+        self.engine = create_engine(self.db_url)
 
     def load_excel_files(self):
         dataframes = []
         for file_path in self.excel_paths:
             df = pd.read_excel(file_path)
-            df.drop(0, inplace=True)  # Adjust this based on your specific need
+            df.drop(0, inplace=True)
             df['timestamp'] = pd.to_datetime(df['Date and time'], format='%d.%m.%Y %H:%M')
             dataframes.append(df)
         self.df_combined = pd.concat(dataframes)
@@ -30,19 +32,13 @@ class DataProcessor:
         self.daytime_data = self.df_combined.between_time(self.day_start, self.day_end)
         self.nighttime_data = self.df_combined[~self.df_combined.index.isin(self.daytime_data.index)]
 
+
     def load_csv_file(self):
         df_hs_p1 = pd.read_csv(self.csv_path)
         df_hs_p1['timestamp'] = pd.to_datetime(df_hs_p1['timestamp'])
         df_hs_p1.set_index('timestamp', inplace=True)
-        return df_hs_p1
 
-    def group_by_date(self):
-        # Assuming you want the grouped dataframes returned
-        grid = self.df_combined.groupby(self.df_combined.index.date)['Energy from grid'].sum()
-        export = self.df_combined.groupby(self.df_combined.index.date)['Energy to grid'].sum()
-        solar = self.df_combined.groupby(self.df_combined.index.date)['PV production'].sum()
-        solar_consumed = self.df_combined.groupby(self.df_combined.index.date)['Consumed directly'].sum()
-        return grid, export, solar, solar_consumed
+        return df_hs_p1
 
     def process_csv(self, df_hs_p1):
         helioscope = df_hs_p1.groupby(df_hs_p1.index.date)['actual_dc_power'].sum()
@@ -52,7 +48,15 @@ class DataProcessor:
         helioscope_df['moving_avg'] = helioscope_df['actual_dc_power'].rolling(window=window_size).mean()
         return helioscope_df
 
-    def group_day_night(self):
-        grid_day = self.daytime_data.groupby(self.daytime_data.index.date)['Energy from grid'].sum()
-        grid_night = self.nighttime_data.groupby(self.nighttime_data.index.date)['Energy from grid'].sum()
-        return grid_day, grid_night
+    def save_to_postgres(self, df, table_name):
+        """ Save a dataframe to a PostgreSQL table """
+        if df is not None:
+            try:
+                df.to_sql(table_name, self.engine, if_exists='replace', index=True)
+                print(f"Data saved to table '{table_name}' in PostgreSQL.")
+            except Exception as e:
+                print(f"An error occurred: {e}")
+        else:
+            print("No data to save.")
+
+
