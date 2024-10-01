@@ -116,5 +116,6 @@ def update_graphs(start_date, end_date):
 
     return graphs
 
+
 if __name__ == '__main__':
     app.run_server(debug=True)
