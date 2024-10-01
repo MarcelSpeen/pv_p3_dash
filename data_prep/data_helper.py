@@ -24,6 +24,7 @@ class DataProcessor:
 
     def resample_data(self):
         self.df_combined = self.df_combined.resample('h').sum()
+        return self.df_combined
 
     def split_day_night_data(self):
         self.daytime_data = self.df_combined.between_time(self.day_start, self.day_end)
