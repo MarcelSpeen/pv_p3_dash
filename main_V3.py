@@ -22,7 +22,6 @@ def get_plant_file_paths(base_dir):
 
     return plant_file_paths
 
-# Assuming you have a function to get a PostgreSQL connection
 # Database connection setup
 def create_pg_engine():
     engine = create_engine('postgresql+psycopg2://marzol:12053@localhost:5432/postgres')
@@ -66,15 +65,11 @@ def query_plant_data(engine, plant, start_date, end_date):
 
         # Query for daily helioscope data
         query_hs_daily = text(f"""
-            SELECT 
-                DATE(timestamp) AS date,
-                SUM(actual_dc_power) AS total_dc_power
-            FROM {plant}_hs
-            WHERE timestamp BETWEEN :start_date AND :end_date
-            GROUP BY DATE(timestamp)
-            ORDER BY DATE(timestamp);
+            SELECT *
+            FROM {plant}_hs_daily
+            WHERE index BETWEEN :start_date AND :end_date;
         """)
-        df_hs_daily = pd.read_sql(query_hs_daily, connection, params={'start_date': start_date, 'end_date': end_date})
+        df_hs_daily = pd.read_sql(query_hs_daily, connection, params={'start_date': start_date, 'end_date': end_date}, index_col='index')
         df_hs_daily.index = pd.to_datetime(df_hs_daily.index)
 
     return df_inv, df_inv_daily, df_hs, df_hs_daily
@@ -148,32 +143,47 @@ def update_graphs(start_date, end_date):
                 'layout': go.Layout(title=f'{plant} Detailed PV Production', xaxis={'range': [start_date, end_date]})
             }
         )
+        daytime_data = df_inv.between_time('08:00:00','16:00:00')
+        nighttime_data = df_inv[~df_inv.index.isin(daytime_data.index)]
 
-        grid_day = df_inv.between_time('08:00:00','16:00:00')
-        grid_night = df_inv[~df_inv.index.isin(grid_day.index)]
-        grid_day = grid_day.groupby(grid_day.index.date).sum()
-        grid_night = grid_night.groupby(grid_night.index.date).sum()
-        print(df_inv_daily.head())
+        # Step 2: Convert 'Energy from grid' to numeric, forcing errors to NaN
+        daytime_data['Energy from grid'] = pd.to_numeric(daytime_data['Energy from grid'], errors='coerce')
+        nighttime_data['Energy from grid'] = pd.to_numeric(nighttime_data['Energy from grid'], errors='coerce')
+
+        # Step 3: Optionally fill NaN values (if needed)
+        # For example, fill NaNs with 0
+        daytime_data['Energy from grid'].fillna(0, inplace=True)
+        nighttime_data['Energy from grid'].fillna(0, inplace=True)
+
+        # Now perform the resampling and grouping
+        daytime_data = daytime_data.resample('h').sum()
+        nighttime_data = nighttime_data.resample('h').sum()
+
+        # Group by date and sum the 'Energy from grid'
+        grid_day = daytime_data.groupby(daytime_data.index.date)['Energy from grid'].sum()
+        grid_night = nighttime_data.groupby(nighttime_data.index.date)['Energy from grid'].sum()
+
         # Create the consumption breakdown graph
         breakdown_graph = dcc.Graph(
             id=f'consumption-breakdown-graph-{plant}',
             figure={
                 'data': [
-                    go.Bar(x=grid_day.index, y=grid_day["Energy from grid"], name='Grid Consumed Day'),
-                    go.Bar(x=grid_night.index, y=grid_night["Energy from grid"], name='Grid Consumed Night'),
-                    go.Bar(x=df_inv_daily.index, y=df_inv_daily['total_energy_to_grid'], name='Export'),
-                    go.Bar(x=df_inv_daily.index, y=df_inv_daily['total_pv_production'], name='PV Production'),
-                    go.Bar(x=df_inv_daily.index, y=df_inv_daily['total_consumed_directly'], name='Solar Consumed'),
-                    go.Scatter(x=df_hs.index, y=df_hs['actual_dc_power'], mode='lines', name='Helioscope Simulation')
+                    go.Bar(x=df_inv_daily.index, y=df_inv_daily['total_consumed_directly'], name='Solar Consumed', marker=dict(color='#FDDA0D')),
+                    go.Bar(x=df_inv_daily.index, y=df_inv_daily['total_energy_to_grid'], name='Export',
+                           marker=dict(color='#AFE1AF'), visible='legendonly'),
+                    go.Bar(x=grid_day.index, y=grid_day.values, name='Grid Consumed Day',marker=dict(color='#F88379')),
+                    go.Bar(x=grid_night.index, y=grid_night.values, name='Grid Consumed Night',marker=dict(color='#6495ED')),
+                    go.Scatter(x=df_hs_daily.index, y=df_hs_daily['moving_avg'], mode='lines', name='Helioscope Simulation',line=dict(color='red', width=3))
                 ],
                 'layout': go.Layout(title=f'{plant} PV Performance', barmode='stack', xaxis={'range': [start_date, end_date]})
             }
         )
+
         # Add plant graphs to the container
         graphs.append(html.Div([
             html.H3(f'{plant} Plant'),
-            energy_graph,
-            breakdown_graph
+            breakdown_graph,
+            energy_graph
         ]))
 
 

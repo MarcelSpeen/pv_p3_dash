@@ -1,0 +1,19 @@
+Value propositions:
+1. Save Time:
+
+How much time does employee spend on monitoring of sites:
+
+1. Daily PV Check:
+If it takes 5 Minutes
+Monthly 20*5 = 100 minutes
+
+If employee is paid R15k a month
+Weekly Work Minutes = 60*8*5*20
+Rate per Minute is 15000/48000
+R per minute = 0.3125
+
+2. Lost revenue due to downtime:
+
+
+
+

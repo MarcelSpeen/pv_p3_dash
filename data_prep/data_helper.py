@@ -34,11 +34,23 @@ class DataProcessor:
 
 
     def load_csv_file(self):
-        df_hs_p1 = pd.read_csv(self.csv_path)
-        df_hs_p1['timestamp'] = pd.to_datetime(df_hs_p1['timestamp'])
-        df_hs_p1.set_index('timestamp', inplace=True)
+        def change_year(timestamp):
+            return timestamp.replace(year=2024)
 
-        return df_hs_p1
+        if self.csv_path:
+            df_hs_p1 = pd.read_csv(self.csv_path)
+
+            # Check if 'timestamp' column exists and change year
+            if 'timestamp' in df_hs_p1.columns:
+                df_hs_p1['timestamp'] = pd.to_datetime(df_hs_p1['timestamp'])  # Ensure it's in datetime format
+                df_hs_p1['timestamp'] = df_hs_p1['timestamp'].apply(change_year)
+                df_hs_p1.set_index('timestamp', inplace=True)
+            else:
+                raise KeyError("The 'timestamp' column is not present in the CSV file.")
+
+            return df_hs_p1
+        else:
+            print("No CSV File Continue")
 
     def process_csv(self, df_hs_p1):
         helioscope = df_hs_p1.groupby(df_hs_p1.index.date)['actual_dc_power'].sum()
@@ -58,5 +70,6 @@ class DataProcessor:
                 print(f"An error occurred: {e}")
         else:
             print("No data to save.")
+
 
 
