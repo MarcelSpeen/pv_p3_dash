@@ -10,7 +10,7 @@ class DataProcessor:
         self.daytime_data = None
         self.nighttime_data = None
         self.df_combined = None
-        self.db_url = "postgresql+psycopg2://marzol:12053@localhost:5432/postgres"
+        self.db_url = "postgresql+psycopg2://postgres_p3_user:sApFc0gEg8G4cYfrCNbufctKuzJ0I9js@dpg-cs5v6ig8fa8c73ar9rf0-a.oregon-postgres.render.com:5432/postgres_p3"
         self.engine = create_engine(self.db_url)
 
     def load_excel_files(self):
