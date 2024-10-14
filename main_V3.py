@@ -24,7 +24,7 @@ def get_plant_file_paths(base_dir):
 
 # Database connection setup
 def create_pg_engine():
-    engine = create_engine('postgresql+psycopg2://postgres_p3_user:sApFc0gEg8G4cYfrCNbufctKuzJ0I9js@dpg-cs5v6ig8fa8c73ar9rf0-a.oregon-postgres.render.com:5432/postgres_p3')
+    engine = create_engine(os.getenv('DATABASE_URL'))
     return engine
 
 # Function to query data for each plant
